@@ -6,6 +6,13 @@ import cookieParser from "cookie-parser";
 import userRouter from "./routers/user.route.js"
 import authRouter from "./routers/auth.router.js"
 import mobilesRouter from "./routers/mobiles.router.js"
+import cors from "cors";
+
+const corsOptions = {
+    origin : "http://localhost:5173/"
+}
+
+
 const app = express()
 
 mongoose.connect(process.env.MONGO_SERVER).then(()=>{
@@ -16,6 +23,7 @@ mongoose.connect(process.env.MONGO_SERVER).then(()=>{
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors())
 
 app.use("/api/user" , userRouter)
 app.use("/api/auth" , authRouter)
