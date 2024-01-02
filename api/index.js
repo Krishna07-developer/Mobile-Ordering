@@ -5,6 +5,7 @@ dotenv.config();
 import cookieParser from "cookie-parser";
 import userRouter from "./routers/user.route.js"
 import authRouter from "./routers/auth.router.js"
+import mobilesRouter from "./routers/mobiles.router.js"
 const app = express()
 
 mongoose.connect(process.env.MONGO_SERVER).then(()=>{
@@ -18,6 +19,7 @@ app.use(cookieParser());
 
 app.use("/api/user" , userRouter)
 app.use("/api/auth" , authRouter)
+app.use("/api/mobiles" , mobilesRouter)
 
 
 app.use((err,req,res,next)=>{
